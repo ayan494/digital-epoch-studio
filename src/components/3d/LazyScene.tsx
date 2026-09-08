@@ -35,8 +35,8 @@ function InView({ children, className, eager = false }: { children: React.ReactN
 type SceneProps =
   | { kind: "hero"; className?: string }
   | { kind: "ecosystem"; className?: string }
-  | ({ kind: "product"; className?: string } & ComponentProps<typeof ProductMini>)
-  | ({ kind: "accent"; className?: string } & { variant: ProductVariant extends never ? never : "glass" | "orb" });
+  | { kind: "product"; className?: string; variant: ProductVariant; active: boolean }
+  | { kind: "accent"; className?: string; variant: "glass" | "orb" };
 
 export function LazyScene(props: SceneProps) {
   const { kind, className } = props;
