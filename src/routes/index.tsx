@@ -1,24 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/sections/Navbar";
+import { Hero } from "@/components/sections/Hero";
+import { LogoMarquee } from "@/components/sections/LogoMarquee";
+import { Services } from "@/components/sections/Services";
+import { Showcase3D } from "@/components/sections/Showcase3D";
+import { Products } from "@/components/sections/Products";
+import { Stats } from "@/components/sections/Stats";
+import { Process } from "@/components/sections/Process";
+import { About } from "@/components/sections/About";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { CTA } from "@/components/sections/CTA";
+import { Footer } from "@/components/sections/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Epoch — Foundation of the new digital epoch" },
+      {
+        name: "description",
+        content:
+          "Epoch is an engineering studio building AI products, Web3 infrastructure and immersive digital experiences for enterprises and builders.",
+      },
+      { property: "og:title", content: "Epoch — Foundation of the new digital epoch" },
+      {
+        property: "og:description",
+        content: "AI products, Web3 infrastructure and real-time 3D experiences, engineered end to end.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <LogoMarquee />
+        <Services />
+        <Showcase3D />
+        <Products />
+        <Stats />
+        <Process />
+        <About />
+        <Testimonials />
+        <CTA />
+      </main>
+      <Footer />
     </div>
   );
 }
